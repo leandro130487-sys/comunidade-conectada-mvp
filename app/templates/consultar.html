@@ -1,0 +1,32 @@
+
+{% extends "base.html" %}
+
+{% block title %}Consultar ocorrências | Comunidade Conectada{% endblock %}
+
+{% block content %}
+<section class="cartao">
+    <h2>Ocorrências registradas</h2>
+
+    {% if ocorrencias %}
+        {% for ocorrencia in ocorrencias %}
+            <div class="ocorrencia">
+                <h3>{{ ocorrencia.categoria }}</h3>
+                <p><strong>Descrição:</strong> {{ ocorrencia.descricao }}</p>
+                <p><strong>Localização:</strong> {{ ocorrencia.localizacao }}</p>
+                <p><strong>Status:</strong> {{ ocorrencia.status }}</p>
+                <p><strong>Número:</strong> {{ ocorrencia.id }}</p>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>Nenhuma ocorrência registrada até o momento.</p>
+    {% endif %}
+
+    <p>
+        <a href="{{ url_for('main.registrar') }}">Registrar nova ocorrência</a>
+    </p>
+
+    <p>
+        <a href="{{ url_for('main.index') }}">Voltar ao início</a>
+    </p>
+</section>
+{% endblock %}
