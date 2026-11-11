@@ -1,0 +1,25 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Comunidade Conectada{% endblock %}</title>
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header class="cabecalho">
+        <h1>Comunidade Conectada</h1>
+        <p>Sua comunidade mais próxima e participativa</p>
+    </header>
+
+    <main class="conteudo">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        Santo Antônio • Sarzedo – MG
+    </footer>
+</body>
+</html>

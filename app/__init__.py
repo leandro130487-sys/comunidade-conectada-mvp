@@ -1,0 +1,17 @@
+
+import os
+from flask import Flask
+
+
+def create_app():
+    app = Flask(__name__)
+
+    app.config["SECRET_KEY"] = os.environ.get(
+        "SECRET_KEY",
+        "chave-local-de-desenvolvimento"
+    )
+
+    from app.routes import main
+    app.register_blueprint(main)
+
+    return app
