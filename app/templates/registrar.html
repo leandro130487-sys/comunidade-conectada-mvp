@@ -1,0 +1,47 @@
+
+{% extends "base.html" %}
+
+{% block title %}Registrar ocorrência | Comunidade Conectada{% endblock %}
+
+{% block content %}
+<section class="cartao">
+    <h2>Registrar ocorrência</h2>
+
+    <p>
+        Informe um problema identificado no bairro Santo Antônio.
+    </p>
+
+    {% with mensagens = get_flashed_messages(with_categories=true) %}
+        {% for categoria, mensagem in mensagens %}
+            <p class="{{ categoria }}">{{ mensagem }}</p>
+        {% endfor %}
+    {% endwith %}
+
+    <form method="POST">
+        <label for="categoria">Categoria:</label>
+        <select id="categoria" name="categoria" required>
+            <option value="">Selecione uma categoria</option>
+            <option value="Iluminação pública">Iluminação pública</option>
+            <option value="Buracos nas ruas">Buracos nas ruas</option>
+            <option value="Descarte irregular de resíduos">Descarte irregular de resíduos</option>
+            <option value="Limpeza urbana">Limpeza urbana</option>
+            <option value="Manutenção de espaços públicos">Manutenção de espaços públicos</option>
+        </select>
+
+        <label for="descricao">Descrição do problema:</label>
+        <textarea id="descricao" name="descricao"
+                  rows="5" required></textarea>
+
+        <label for="localizacao">Localização:</label>
+        <input type="text" id="localizacao" name="localizacao"
+               placeholder="Informe a rua ou ponto de referência"
+               required>
+
+        <button type="submit">Registrar ocorrência</button>
+    </form>
+
+    <p>
+        <a href="{{ url_for('main.index') }}">Voltar ao início</a>
+    </p>
+</section>
+{% endblock %}
