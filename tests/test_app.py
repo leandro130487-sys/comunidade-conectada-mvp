@@ -77,3 +77,34 @@ def test_cadastro_invalido(client):
     assert response.status_code == 200
     assert "Preencha todos os campos obrigatórios".encode(
         "utf-8") in response.data
+
+
+def test_rejeita_campos_com_apenas_espacos(client):
+    response = client.post(
+        "/registrar",
+        data={
+            "categoria": "Iluminação pública",
+            "descricao": "   ",
+            "localizacao": "Rua das Flores"
+        },
+        follow_redirects=True
+    )
+
+    assert response.status_code == 200
+    assert "Preencha todos os campos obrigatórios".encode(
+        "utf-8") in response.data
+
+
+def test_rejeita_categoria_invalida(client):
+    response = client.post(
+        "/registrar",
+        data={
+            "categoria": "Categoria inventada",
+            "descricao": "Problema de teste",
+            "localizacao": "Rua das Flores"
+        },
+        follow_redirects=True
+    )
+
+    assert response.status_code == 200
+    assert "Categoria inválida".encode("utf-8") in response.data
