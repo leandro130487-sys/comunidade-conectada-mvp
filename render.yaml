@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: comunidade-conectada
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn run:app
