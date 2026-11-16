@@ -8,6 +8,7 @@ body {
     font-family: Arial, sans-serif;
     background: #f2f5f8;
     color: #263445;
+    font-size: 1rem;
 }
 
 .cabecalho {
@@ -19,6 +20,33 @@ body {
 
 .cabecalho h1 {
     margin: 0 0 10px;
+}
+
+.acessibilidade {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.acessibilidade button {
+    background: white;
+    color: #17365d;
+    border: 2px solid white;
+    border-radius: 5px;
+    padding: 8px 14px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.acessibilidade button:hover,
+.acessibilidade button:focus {
+    background: #dce8f5;
+    outline: 3px solid #ffdc55;
+    outline-offset: 2px;
 }
 
 .conteudo {
@@ -36,7 +64,7 @@ body {
 
 .aviso {
     color: #52677d;
-    font-size: 14px;
+    font-size: 0.875rem;
     margin-top: 25px;
 }
 
@@ -44,6 +72,11 @@ footer {
     text-align: center;
     padding: 20px;
     color: #52677d;
+}
+
+.leitor-aviso {
+    display: block;
+    margin-top: 8px;
 }
 
 @media (max-width: 600px) {
