@@ -1,0 +1,29 @@
+
+name: Testes automatizados - Comunidade Conectada
+
+on:
+  push:
+    branches: [main, revisao-tecnica]
+  pull_request:
+    branches: [main]
+
+jobs:
+  testes:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Baixar o código
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
+      - name: Instalar dependências
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Executar testes automatizados
+        run: python -m pytest -v tests/test_app.py
