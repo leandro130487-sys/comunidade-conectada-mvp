@@ -12,6 +12,27 @@
     <header class="cabecalho">
         <h1>Comunidade Conectada</h1>
         <p>Sua comunidade mais próxima e participativa</p>
+
+        <div class="acessibilidade" aria-label="Controles de acessibilidade">
+            <span>Tamanho do texto:</span>
+
+            <button type="button" id="diminuir-fonte"
+                    aria-label="Diminuir tamanho do texto">
+                A−
+            </button>
+
+            <button type="button" id="aumentar-fonte"
+                    aria-label="Aumentar tamanho do texto">
+                A+
+            </button>
+
+            <button type="button" id="fonte-padrao">
+                Padrão
+            </button>
+        </div>
+
+        <span id="aviso-fonte" class="leitor-aviso"
+              aria-live="polite"></span>
     </header>
 
     <main class="conteudo">
@@ -21,5 +42,38 @@
     <footer>
         Santo Antônio • Sarzedo – MG
     </footer>
+
+    <script>
+        let tamanhoFonte = 16;
+
+        function atualizarFonte() {
+            document.documentElement.style.fontSize =
+                tamanhoFonte + "px";
+
+            document.getElementById("aviso-fonte").textContent =
+                "Tamanho do texto: " + tamanhoFonte + " pixels";
+        }
+
+        document.getElementById("aumentar-fonte").addEventListener("click", function() {
+            if (tamanhoFonte < 24) {
+                tamanhoFonte += 2;
+                atualizarFonte();
+            }
+        });
+
+        document.getElementById("diminuir-fonte").addEventListener("click", function() {
+            if (tamanhoFonte > 12) {
+                tamanhoFonte -= 2;
+                atualizarFonte();
+            }
+        });
+
+        document.getElementById("fonte-padrao").addEventListener("click", function() {
+            tamanhoFonte = 16;
+            atualizarFonte();
+        });
+
+        atualizarFonte();
+    </script>
 </body>
 </html>
